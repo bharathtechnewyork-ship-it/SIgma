@@ -25,11 +25,9 @@ Static output lives in `dist/` after `npm run build`.
 
 ## Contact form
 
-The contact form uses [FormSubmit](https://formsubmit.co) and sends inquiries to `info@sigmaprecisions.com`.
+The contact form uses [FormSubmit](https://formsubmit.co) and sends inquiries to `puram.bharath@gmail.com` (site still shows `info@sigmaprecisions.com`).
 
-**First submission:** FormSubmit emails that inbox with an activation link — click it once. After that, inquiries arrive normally.
-
-Make sure `info@sigmaprecisions.com` exists (Cloudflare Email Routing → forward to Gmail works well).
+**First submission:** FormSubmit emails that Gmail with an activation link — click it once. After that, inquiries arrive normally.
 
 ## After go-live checklist
 

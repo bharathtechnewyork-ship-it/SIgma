@@ -71,11 +71,11 @@ const nextUrl = `${site.domain}/contact?sent=1`;
         )
       }
 
-      <!-- FormSubmit delivers to site.email. First use: confirm the activation email in that inbox. -->
+      <!-- FormSubmit delivers to formEmail. Site display email stays site.email. -->
       <form
         id="inquiry-form"
         class="mt-8 space-y-5"
-        action={`https://formsubmit.co/${site.email}`}
+        action={`https://formsubmit.co/${site.formEmail}`}
         method="POST"
       >
         <input type="hidden" name="_subject" value="Sigma Precisions website inquiry" />
