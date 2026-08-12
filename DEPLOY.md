@@ -23,11 +23,13 @@ Static output lives in `dist/` after `npm run build`.
 4. Domain management → add `sigmaprecisions.com` and follow Netlify DNS guidance.
 5. The contact form includes `data-netlify="true"` — enable form detection on Netlify, or use Formspree below.
 
-## Contact form (Formspree)
+## Contact form
 
-1. Create a free form at [formspree.io](https://formspree.io).
-2. Open `src/pages/contact.astro` and replace `YOUR_FORM_ID` in the form `action` URL.
-3. Redeploy.
+The contact form uses [FormSubmit](https://formsubmit.co) and sends inquiries to `info@sigmaprecisions.com`.
+
+**First submission:** FormSubmit emails that inbox with an activation link — click it once. After that, inquiries arrive normally.
+
+Make sure `info@sigmaprecisions.com` exists (Cloudflare Email Routing → forward to Gmail works well).
 
 ## After go-live checklist
 

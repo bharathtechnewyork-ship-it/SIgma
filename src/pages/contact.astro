@@ -4,6 +4,8 @@ import PageHero from '../components/PageHero.astro';
 import { site } from '../site';
 
 const mapsEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(site.address.mapsQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+const sent = Astro.url.searchParams.get('sent') === '1';
+const nextUrl = `${site.domain}/contact?sent=1`;
 ---
 
 <Layout
@@ -58,18 +60,29 @@ const mapsEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(site.addr
         Fields marked required help us respond faster. Attach drawings by email if needed.
       </p>
 
-      <!-- Replace YOUR_FORM_ID in action with your Formspree form ID (see DEPLOY.md) -->
+      {
+        sent && (
+          <div
+            class="mt-6 border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-accent-soft"
+            role="status"
+          >
+            Thank you — your inquiry was sent. We’ll get back to you shortly.
+          </div>
+        )
+      }
+
+      <!-- FormSubmit delivers to site.email. First use: confirm the activation email in that inbox. -->
       <form
+        id="inquiry-form"
         class="mt-8 space-y-5"
-        action="https://formspree.io/f/YOUR_FORM_ID"
+        action={`https://formsubmit.co/${site.email}`}
         method="POST"
-        data-netlify="true"
-        name="contact"
       >
         <input type="hidden" name="_subject" value="Sigma Precisions website inquiry" />
-        <p class="hidden" aria-hidden="true">
-          <label>Don’t fill this out: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
-        </p>
+        <input type="hidden" name="_next" value={nextUrl} />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
         <div>
           <label for="name" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Name *</label>
@@ -117,10 +130,7 @@ const mapsEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(site.addr
           ></textarea>
         </div>
 
-        <button
-          type="submit"
-          class="cta-btn inline-flex"
-        >
+        <button type="submit" class="cta-btn inline-flex" id="inquiry-submit">
           Send inquiry
         </button>
       </form>
