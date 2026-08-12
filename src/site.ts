@@ -4,6 +4,7 @@ export const site = {
   domain: 'https://sigmaprecisions.com',
   email: 'info@sigmaprecisions.com',
   formEmail: 'puram.bharath@gmail.com',
+  web3formsAccessKey: '15c535d7-a4dc-48aa-bcd5-546d295b30c3',
   phone: '+91 99494 98896',
   phoneHref: 'tel:+919949498896',
   address: {

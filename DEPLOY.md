@@ -25,9 +25,8 @@ Static output lives in `dist/` after `npm run build`.
 
 ## Contact form
 
-The contact form uses [FormSubmit](https://formsubmit.co) and sends inquiries to `puram.bharath@gmail.com` (site still shows `info@sigmaprecisions.com`).
-
-**First submission:** FormSubmit emails that Gmail with an activation link — click it once. After that, inquiries arrive normally.
+Uses [Web3Forms](https://web3forms.com). Access key is in `src/site.ts` (`web3formsAccessKey`).  
+Inquiries go to `puram.bharath@gmail.com`; the site still shows `info@sigmaprecisions.com`.
 
 ## After go-live checklist
 
