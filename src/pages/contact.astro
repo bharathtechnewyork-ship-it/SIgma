@@ -4,6 +4,8 @@ import PageHero from '../components/PageHero.astro';
 import { site } from '../site';
 
 const mapsEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(site.address.mapsQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+const nextUrl = `${site.domain}/contact?sent=1`;
+const sent = Astro.url.searchParams.get('sent') === '1';
 ---
 
 <Layout
@@ -58,128 +60,88 @@ const mapsEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(site.addr
         Fields marked required help us respond faster. Attach drawings by email if needed.
       </p>
 
-      <div
-        id="form-success"
-        class="mt-6 hidden border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-accent-soft"
-        role="status"
-      >
-        Thank you — your inquiry was sent to our team. We’ll get back to you shortly.
-      </div>
+      {
+        sent ? (
+          <div class="mt-6 space-y-3 border border-accent/40 bg-accent/10 px-4 py-4 text-sm text-accent-soft" role="status">
+            <p class="font-semibold text-snow">Inquiry submitted.</p>
+            <p>
+              Messages are delivered to <span class="text-snow">{site.formEmail}</span>.
+            </p>
+            <p class="text-mist">
+              First time only: look in that Gmail inbox (and Spam) for an email from <strong class="text-fog">FormSubmit</strong> and click
+              <strong class="text-fog"> Activate Form</strong>. After that, enquiry content arrives directly.
+            </p>
+          </div>
+        ) : (
+          <form
+            id="inquiry-form"
+            class="mt-8 space-y-5"
+            action={`https://formsubmit.co/${site.formEmail}`}
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="Sigma Precisions website inquiry" />
+            <input type="hidden" name="_next" value={nextUrl} />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_cc" value={site.formEmail} />
+            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-      <div
-        id="form-error"
-        class="mt-6 hidden border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200"
-        role="alert"
-      ></div>
+            <div>
+              <label for="name" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Name *</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
+                class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
+              />
+            </div>
 
-      <form id="inquiry-form" class="mt-8 space-y-5">
-        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div>
+              <label for="email" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Email *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
+              />
+            </div>
 
-        <div>
-          <label for="name" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Name *</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            autocomplete="name"
-            class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
-          />
-        </div>
+            <div>
+              <label for="company" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Company</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                autocomplete="organization"
+                class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
+              />
+            </div>
 
-        <div>
-          <label for="email" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Email *</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autocomplete="email"
-            class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
-          />
-        </div>
+            <div>
+              <label for="message" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Message *</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="6"
+                class="mt-2 w-full resize-y rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
+              ></textarea>
+            </div>
 
-        <div>
-          <label for="company" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Company</label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            autocomplete="organization"
-            class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
-          />
-        </div>
+            <button type="submit" class="cta-btn inline-flex">Send inquiry</button>
 
-        <div>
-          <label for="message" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Message *</label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows="6"
-            class="mt-2 w-full resize-y rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
-          ></textarea>
-        </div>
-
-        <button type="submit" class="cta-btn inline-flex" id="inquiry-submit">
-          Send inquiry
-        </button>
-      </form>
+            <p class="text-xs text-mist leading-relaxed">
+              Enquiries are sent to our team inbox. If this is the first submission, FormSubmit will email
+              <span class="text-fog"> {site.formEmail} </span>
+              an activation link — click it once (check Spam too).
+            </p>
+          </form>
+        )
+      }
     </div>
   </section>
-
-  <script define:vars={{ accessKey: site.web3formsAccessKey }}>
-    const form = document.getElementById('inquiry-form');
-    const success = document.getElementById('form-success');
-    const errorBox = document.getElementById('form-error');
-    const button = document.getElementById('inquiry-submit');
-
-    form?.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      if (!form || !button) return;
-
-      errorBox?.classList.add('hidden');
-      success?.classList.add('hidden');
-      button.setAttribute('disabled', 'true');
-      button.textContent = 'Sending…';
-
-      const data = new FormData(form);
-      const payload = Object.fromEntries(data.entries());
-      payload.access_key = accessKey;
-      payload.subject = 'Sigma Precisions website inquiry';
-      payload.from_name = 'Sigma Precisions Website';
-
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(payload),
-        });
-        const result = await response.json();
-
-        if (result.success) {
-          form.reset();
-          form.classList.add('hidden');
-          success?.classList.remove('hidden');
-        } else {
-          if (errorBox) {
-            errorBox.textContent = result.message || 'Could not send. Please email us or try again.';
-            errorBox.classList.remove('hidden');
-          }
-          button.removeAttribute('disabled');
-          button.textContent = 'Send inquiry';
-        }
-      } catch {
-        if (errorBox) {
-          errorBox.textContent = 'Network error. Please try again or call us directly.';
-          errorBox.classList.remove('hidden');
-        }
-        button.removeAttribute('disabled');
-        button.textContent = 'Send inquiry';
-      }
-    });
-  </script>
 </Layout>
