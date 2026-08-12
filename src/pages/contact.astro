@@ -4,8 +4,6 @@ import PageHero from '../components/PageHero.astro';
 import { site } from '../site';
 
 const mapsEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(site.address.mapsQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
-const sent = Astro.url.searchParams.get('sent') === '1';
-const nextUrl = `${site.domain}/contact?sent=1`;
 ---
 
 <Layout
@@ -60,28 +58,21 @@ const nextUrl = `${site.domain}/contact?sent=1`;
         Fields marked required help us respond faster. Attach drawings by email if needed.
       </p>
 
-      {
-        sent && (
-          <div
-            class="mt-6 border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-accent-soft"
-            role="status"
-          >
-            Thank you — your inquiry was sent. We’ll get back to you shortly.
-          </div>
-        )
-      }
-
-      <!-- Web3Forms → formEmail inbox. Site display email stays site.email. -->
-      <form
-        id="inquiry-form"
-        class="mt-8 space-y-5"
-        action="https://api.web3forms.com/submit"
-        method="POST"
+      <div
+        id="form-success"
+        class="mt-6 hidden border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-accent-soft"
+        role="status"
       >
-        <input type="hidden" name="access_key" value={site.web3formsAccessKey} />
-        <input type="hidden" name="subject" value="Sigma Precisions website inquiry" />
-        <input type="hidden" name="from_name" value="Sigma Precisions Website" />
-        <input type="hidden" name="redirect" value={nextUrl} />
+        Thank you — your inquiry was sent to our team. We’ll get back to you shortly.
+      </div>
+
+      <div
+        id="form-error"
+        class="mt-6 hidden border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+        role="alert"
+      ></div>
+
+      <form id="inquiry-form" class="mt-8 space-y-5">
         <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
         <div>
@@ -136,4 +127,59 @@ const nextUrl = `${site.domain}/contact?sent=1`;
       </form>
     </div>
   </section>
+
+  <script define:vars={{ accessKey: site.web3formsAccessKey }}>
+    const form = document.getElementById('inquiry-form');
+    const success = document.getElementById('form-success');
+    const errorBox = document.getElementById('form-error');
+    const button = document.getElementById('inquiry-submit');
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form || !button) return;
+
+      errorBox?.classList.add('hidden');
+      success?.classList.add('hidden');
+      button.setAttribute('disabled', 'true');
+      button.textContent = 'Sending…';
+
+      const data = new FormData(form);
+      const payload = Object.fromEntries(data.entries());
+      payload.access_key = accessKey;
+      payload.subject = 'Sigma Precisions website inquiry';
+      payload.from_name = 'Sigma Precisions Website';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          form.reset();
+          form.classList.add('hidden');
+          success?.classList.remove('hidden');
+        } else {
+          if (errorBox) {
+            errorBox.textContent = result.message || 'Could not send. Please email us or try again.';
+            errorBox.classList.remove('hidden');
+          }
+          button.removeAttribute('disabled');
+          button.textContent = 'Send inquiry';
+        }
+      } catch {
+        if (errorBox) {
+          errorBox.textContent = 'Network error. Please try again or call us directly.';
+          errorBox.classList.remove('hidden');
+        }
+        button.removeAttribute('disabled');
+        button.textContent = 'Send inquiry';
+      }
+    });
+  </script>
 </Layout>
