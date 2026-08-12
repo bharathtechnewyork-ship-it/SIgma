@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" fill="none">
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c3a4d"/>
+      <stop offset="100%" stop-color="#121c2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#f)"/>
+  <rect x="120" y="220" width="1360" height="720" fill="#1a2636" stroke="#9a7b4f" stroke-opacity="0.3" stroke-width="2"/>
+  <rect x="200" y="300" width="280" height="200" fill="#0b1420" opacity="0.7"/>
+  <rect x="520" y="300" width="280" height="200" fill="#0b1420" opacity="0.55"/>
+  <rect x="840" y="300" width="280" height="200" fill="#0b1420" opacity="0.7"/>
+  <rect x="200" y="560" width="920" height="280" fill="#0b1420" opacity="0.5"/>
+  <text x="200" y="180" fill="#c8d0da" font-family="system-ui,sans-serif" font-size="36" letter-spacing="4">BALANAGAR FACILITY</text>
+  <text x="200" y="980" fill="#8a97a8" font-family="system-ui,sans-serif" font-size="22">Replace with /images/facility.jpg</text>
+</svg>

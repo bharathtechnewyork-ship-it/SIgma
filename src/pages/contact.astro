@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../site';
+
+const mapsEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(site.address.mapsQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+---
+
+<Layout
+  title="Contact"
+  description="Contact Sigma Precisions in Balanagar, Hyderabad. Request a quote for precision engineering programs."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Request a quote"
+    description="Tell us about your component, drawings, or qualification needs. We respond with a clear next step."
+  />
+
+  <section class="mx-auto grid max-w-6xl gap-14 px-5 py-16 md:grid-cols-2 md:gap-16 md:px-8 md:py-24">
+    <div class="reveal">
+      <h2 class="font-display text-xl font-semibold text-snow">Facility</h2>
+      <p class="mt-3 text-sm text-mist">
+        Directed by <span class="text-fog">{site.leadership.name}</span>, {site.leadership.shortTitle}
+      </p>
+      <address class="mt-5 space-y-1 text-mist not-italic leading-relaxed">
+        {site.address.lines.map((line) => <span class="block">{line}</span>)}
+      </address>
+
+      <dl class="mt-10 space-y-4 text-sm">
+        <div>
+          <dt class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Email</dt>
+          <dd class="mt-2">
+            <a href={`mailto:${site.email}`} class="text-fog transition-colors hover:text-accent">{site.email}</a>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Phone</dt>
+          <dd class="mt-2">
+            <a href={site.phoneHref} class="text-fog transition-colors hover:text-accent">{site.phone}</a>
+          </dd>
+        </div>
+      </dl>
+
+      <div class="mt-10 overflow-hidden rounded-sm border border-graphite bg-steel">
+        <iframe
+          title="Map to Sigma Precisions, Technocrat Industrial Estate, Balanagar"
+          src={mapsEmbed}
+          class="h-64 w-full grayscale contrast-125"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <h2 class="font-display text-xl font-semibold text-snow">Inquiry form</h2>
+      <p class="mt-3 text-sm text-mist">
+        Fields marked required help us respond faster. Attach drawings by email if needed.
+      </p>
+
+      <!-- Replace YOUR_FORM_ID in action with your Formspree form ID (see DEPLOY.md) -->
+      <form
+        class="mt-8 space-y-5"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+        data-netlify="true"
+        name="contact"
+      >
+        <input type="hidden" name="_subject" value="Sigma Precisions website inquiry" />
+        <p class="hidden" aria-hidden="true">
+          <label>Don’t fill this out: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <div>
+          <label for="name" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Name *</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            autocomplete="name"
+            class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Email *</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
+          />
+        </div>
+
+        <div>
+          <label for="company" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Company</label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            autocomplete="organization"
+            class="mt-2 w-full rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-xs font-semibold uppercase tracking-[0.16em] text-fog">Message *</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows="6"
+            class="mt-2 w-full resize-y rounded-sm border border-graphite bg-ink px-4 py-3 text-sm text-snow outline-none transition-colors focus:border-accent"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="cta-btn inline-flex"
+        >
+          Send inquiry
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>

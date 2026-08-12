@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<Layout
+  title="Capabilities"
+  description="Design, prototype manufacturing, qualification testing, and low-to-medium volume production of precision-engineered systems and components."
+>
+  <PageHero
+    eyebrow="Capabilities"
+    title="End-to-end precision engineering"
+    description="A disciplined path from specification to qualified parts—design, prototype, test, and manufacture."
+  />
+
+  <section class="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <div class="space-y-20 md:space-y-28">
+      {
+        [
+          {
+            step: '01',
+            title: 'Design & engineering',
+            body: 'We support mechanical and electro-mechanical product development across the full lifecycle—requirements translation, design for manufacturability, and process definition. Work is grounded in the realities of production: tolerances, materials, and the environments your parts must survive.',
+            points: [
+              'Specification-driven design support',
+              'DFM and process planning',
+              'Alternate manufacturing process development & validation',
+            ],
+          },
+          {
+            step: '02',
+            title: 'Prototype manufacturing',
+            body: 'Prototype builds close the gap between drawing and reality. We produce controlled, low-volume samples so you can evaluate assembly, performance, and supplier readiness before scaling.',
+            points: [
+              'Fast, controlled prototype builds',
+              'Fit, form, and function validation',
+              'Feedback into design and process',
+            ],
+          },
+          {
+            step: '03',
+            title: 'Qualification & reliability testing',
+            body: 'Qualification is where trust is earned. We support reliability and qualification testing aligned to your program so components meet duty-cycle and industry expectations before they enter service.',
+            points: [
+              'Qualification planning support',
+              'Reliability-oriented test execution',
+              'Traceable results for program decisions',
+            ],
+          },
+          {
+            step: '04',
+            title: 'Manufacturing & supply',
+            body: 'For low-to-medium volume production, we manufacture and supply precision systems and components with process discipline suited to power, aerospace, and oil & gas programs—including demanding alloys and tight process windows.',
+            points: [
+              'Low-to-medium volume production',
+              'Super alloy and specialty material handling',
+              'Spares and program continuity supply',
+            ],
+          },
+        ].map((block) => (
+          <article class="reveal grid gap-8 border-t border-graphite pt-12 md:grid-cols-[8rem_1fr] md:gap-14">
+            <p class="font-display text-sm font-semibold text-accent">{block.step}</p>
+            <div>
+              <h2 class="font-display text-2xl font-semibold tracking-tight text-snow md:text-3xl">{block.title}</h2>
+              <p class="mt-5 max-w-2xl text-mist leading-relaxed">{block.body}</p>
+              <ul class="mt-8 space-y-3">
+                {block.points.map((p) => (
+                  <li class="flex gap-3 text-sm text-fog">
+                    <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="reveal mt-20 border-t border-graphite pt-12">
+      <a
+        href="/contact"
+        class="cta-btn inline-flex"
+      >
+        Discuss a program
+      </a>
+    </div>
+  </section>
+</Layout>

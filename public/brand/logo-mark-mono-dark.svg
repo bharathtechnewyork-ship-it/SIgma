@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sigma Precisions mark">
+  <title>Sigma Precisions Mark  Mono Dark</title>
+  <rect x="5" y="5" width="54" height="54" rx="2" fill="none" stroke="#0B1420" stroke-width="1.5"/>
+  <circle cx="32" cy="32" r="19" fill="none" stroke="#0B1420" stroke-width="1.75"/>
+  <circle cx="32" cy="32" r="11.5" fill="none" stroke="#0B1420" stroke-opacity="0.35" stroke-width="1"/>
+  <path d="M32 9.5v7.5M32 47v7.5M9.5 32h7.5M47 32h7.5" stroke="#0B1420" stroke-width="1.5" stroke-linecap="square"/>
+  <path d="M21.5 21.5h21L30.5 32l12 10.5h-21" fill="none" stroke="#0B1420" stroke-width="2.25" stroke-linecap="square" stroke-linejoin="miter"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121c2a"/>
+      <stop offset="55%" stop-color="#1a2636"/>
+      <stop offset="100%" stop-color="#0b1420"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#2c3a4d" stroke-width="1" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#g)"/>
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+  <circle cx="1480" cy="380" r="320" fill="#9a7b4f" opacity="0.07"/>
+  <path d="M180 820h620M180 860h420" stroke="#9a7b4f" stroke-width="2" opacity="0.4"/>
+  <text x="180" y="780" fill="#8a97a8" font-family="system-ui,sans-serif" font-size="28" letter-spacing="6">FACILITY PHOTO PLACEHOLDER</text>
+</svg>

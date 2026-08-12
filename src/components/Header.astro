@@ -1,0 +1,108 @@
+---
+import { nav, site } from '../site';
+import Logo from './Logo.astro';
+
+const pathname = Astro.url.pathname;
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 md:px-8">
+    <a href="/" class="group transition-opacity hover:opacity-90" aria-label={`${site.name} home`}>
+      <Logo />
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'text-sm tracking-wide transition-colors',
+              pathname === item.href || pathname.startsWith(item.href + '/')
+                ? 'text-accent'
+                : 'text-fog/70 hover:text-snow',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="/contact"
+        class="cta-btn !hidden !px-4 !py-2 sm:!inline-flex"
+      >
+        Request a quote
+      </a>
+      <button
+        type="button"
+        id="menu-toggle"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-graphite text-fog lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open menu"
+      >
+        <span class="sr-only">Menu</span>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="hidden border-t border-graphite bg-slate-deep/95 px-5 py-4 backdrop-blur-md lg:hidden" hidden>
+    <nav class="flex flex-col gap-4" aria-label="Mobile">
+      {
+        nav.map((item) => (
+          <a href={item.href} class="text-base text-fog hover:text-accent">
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="/contact" class="cta-btn mt-2 inline-flex w-fit !px-4 !py-2">
+        Request a quote
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  const onScroll = () => {
+    if (!header) return;
+    if (window.scrollY > 24) {
+      header.classList.add('border-graphite/80', 'bg-ink/85', 'backdrop-blur-md');
+      header.classList.remove('border-transparent');
+    } else {
+      header.classList.remove('border-graphite/80', 'bg-ink/85', 'backdrop-blur-md');
+      header.classList.add('border-transparent');
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  toggle?.addEventListener('click', () => {
+    const open = mobileNav?.hasAttribute('hidden') === false;
+    if (!mobileNav || !toggle) return;
+    if (open) {
+      mobileNav.hidden = true;
+      mobileNav.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+    } else {
+      mobileNav.hidden = false;
+      mobileNav.classList.remove('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+    }
+  });
+</script>

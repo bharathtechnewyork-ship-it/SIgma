@@ -1,0 +1,56 @@
+---
+import { nav, site } from '../site';
+import Logo from './Logo.astro';
+---
+
+<footer class="border-t border-graphite bg-slate-deep">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-3 md:px-8">
+    <div>
+      <Logo markClass="h-10 w-10" />
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-mist">{site.tagline}</p>
+      <p class="mt-4 text-sm text-fog/80">
+        {site.leadership.shortTitle}: <span class="text-snow">{site.leadership.name}</span>
+      </p>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Navigate</p>
+      <ul class="mt-4 space-y-2">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm text-fog/80 transition-colors hover:text-accent">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Facility</p>
+      <address class="mt-4 space-y-1 text-sm not-italic leading-relaxed text-fog/80">
+        {site.address.lines.map((line) => <span class="block">{line}</span>)}
+      </address>
+      <p class="mt-4 text-sm">
+        <a href={`mailto:${site.email}`} class="text-fog transition-colors hover:text-accent">{site.email}</a>
+      </p>
+      <p class="mt-1 text-sm">
+        <a href={site.phoneHref} class="text-mist transition-colors hover:text-accent">{site.phone}</a>
+      </p>
+      <p class="mt-4">
+        <a href="/brand" class="text-xs font-semibold uppercase tracking-[0.18em] text-fog/70 transition-colors hover:text-accent">
+          Brand identity
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="border-t border-graphite/80">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-xs text-mist md:flex-row md:items-center md:justify-between md:px-8">
+      <p>&copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
+      <p>Hyderabad, India</p>
+    </div>
+  </div>
+</footer>

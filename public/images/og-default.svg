@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0b1420"/>
+  <circle cx="980" cy="120" r="220" fill="#9a7b4f" opacity="0.1"/>
+  <rect x="72" y="230" width="72" height="72" rx="2" fill="#1a2636" stroke="#2c3a4d"/>
+  <circle cx="108" cy="266" r="22" stroke="#9a7b4f" stroke-width="2" fill="none"/>
+  <path d="M96 254h24l-14 12 14 12H96" stroke="#f2f4f7" stroke-width="2.5" fill="none"/>
+  <text x="168" y="268" fill="#f2f4f7" font-family="system-ui,sans-serif" font-size="42" font-weight="700" letter-spacing="4">SIGMA PRECISIONS</text>
+  <text x="168" y="310" fill="#8a97a8" font-family="system-ui,sans-serif" font-size="22">Precision-engineered systems and components</text>
+</svg>

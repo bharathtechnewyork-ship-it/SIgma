@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../site';
+---
+
+<Layout
+  title="About"
+  description={`About Sigma Precisions — owned and led by CEO ${site.leadership.name}. Precision engineering from Technocrat Industrial Estate, Balanagar, Hyderabad.`}
+>
+  <PageHero
+    eyebrow="About"
+    title="Precision engineering from Hyderabad"
+    description={`Owned and led by ${site.leadership.name}, CEO — a manufacturing company built for design-through-production programs in critical industries.`}
+  />
+
+  <section class="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <!-- Leadership: CEO & Owner -->
+    <article class="reveal border-b border-graphite pb-16 md:pb-20">
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Leadership</p>
+      <div class="mt-8 grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16 md:items-start">
+        <div>
+          <h2 class="font-display text-3xl font-semibold tracking-tight text-snow md:text-4xl">
+            {site.leadership.name}
+          </h2>
+          <p class="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+            {site.leadership.title}
+          </p>
+        </div>
+        <div class="space-y-5 text-mist leading-relaxed">
+          <p>
+            {site.leadership.name} is the Chief Executive Officer and owner of {site.name}. He leads the company with
+            full accountability for strategy, customer relationships, and delivery—setting the standard for how
+            precision programs are engineered, qualified, and supplied from our Hyderabad facility.
+          </p>
+          <p>
+            Under his ownership and direction, {site.name} operates as an end-to-end partner for mechanical and
+            electro-mechanical components: design and engineering, prototype manufacturing, qualification and
+            reliability testing, and low-to-medium volume production for power generation, aerospace, and oil &amp; gas.
+          </p>
+          <p>
+            Customers work directly with a company whose leadership is invested in outcomes—not as an employee of
+            another brand, but as the principal responsible for every commitment made under the Sigma Precisions name.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <div class="grid gap-12 pt-16 md:grid-cols-2 md:gap-16 md:pt-20">
+      <div class="reveal">
+        <h2 class="font-display text-2xl font-semibold tracking-tight text-snow md:text-3xl">Who we are</h2>
+        <p class="mt-6 text-mist leading-relaxed">
+          {site.name} designs, develops, prototypes, tests, and manufactures precision-engineered systems and
+          components. We work with customers who need more than a machining quote—they need a company that can carry a
+          part from concept through qualification and into reliable supply.
+        </p>
+        <p class="mt-4 text-mist leading-relaxed">
+          Our work spans mechanical and electro-mechanical products, alternate process development, and the materials
+          challenges common to power generation, aerospace, and oil &amp; gas—guided by the vision and ownership of{' '}
+          {site.leadership.name}.
+        </p>
+      </div>
+
+      <div class="reveal relative aspect-[4/3] overflow-hidden rounded-sm bg-graphite">
+        <img
+          src="/images/facility.jpg"
+          alt="Industrial manufacturing facility in Hyderabad’s engineering corridor"
+          class="h-full w-full object-cover"
+          width="800"
+          height="600"
+        />
+      </div>
+    </div>
+
+    <div class="reveal mt-20 border-t border-graphite pt-16">
+      <h2 class="font-display text-2xl font-semibold tracking-tight text-snow md:text-3xl">Our facility</h2>
+      <p class="mt-6 max-w-2xl text-mist leading-relaxed">
+        We operate from Technocrat Industrial Estate in Balanagar, Hyderabad—an established industrial corridor with
+        access to skilled talent and supply networks across Telangana.
+      </p>
+      <div class="mt-10 grid gap-4 md:grid-cols-2">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-graphite">
+          <img
+            src="/images/facility-shop.jpg"
+            alt="Machine shop environment in Telangana’s industrial manufacturing sector"
+            class="h-full w-full object-cover"
+            width="1000"
+            height="750"
+            loading="lazy"
+          />
+        </div>
+        <div class="relative aspect-[4/3] overflow-hidden rounded-sm bg-graphite">
+          <img
+            src="/images/precision-work.jpg"
+            alt="Precision engineering and component work typical of Hyderabad manufacturing"
+            class="h-full w-full object-cover"
+            width="1000"
+            height="750"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      <address class="mt-8 not-italic text-fog leading-relaxed">
+        {site.address.lines.map((line) => <span class="block">{line}</span>)}
+      </address>
+    </div>
+
+    <div class="reveal mt-20 border-t border-graphite pt-16">
+      <h2 class="font-display text-2xl font-semibold tracking-tight text-snow md:text-3xl">
+        Why partners choose Sigma
+      </h2>
+      <ul class="mt-10 max-w-2xl space-y-6">
+        {
+          [
+            {
+              t: 'Owner-led accountability',
+              d: `Programs guided by ${site.leadership.name}, CEO & Owner—clear decisions and direct responsibility.`,
+            },
+            {
+              t: 'Full lifecycle support',
+              d: 'Design, prototype, qualify, and manufacture under one accountable company.',
+            },
+            {
+              t: 'Industry-aligned execution',
+              d: 'Process and materials awareness suited to turbine, aerospace, and oil & gas duty.',
+            },
+          ].map((item) => (
+            <li class="border-l border-graphite pl-5">
+              <p class="font-semibold text-snow">{item.t}</p>
+              <p class="mt-2 text-sm text-mist">{item.d}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../site';
+---
+
+<Layout
+  title={`${site.name} | Precision Engineering`}
+  description={site.description}
+>
+  <!-- Hero: brand-first, one composition -->
+  <section class="relative min-h-[100svh] overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="/images/hero.jpg"
+        alt="Precision manufacturing facility — industrial engineering environment"
+        class="h-full w-full object-cover object-center"
+        width="1920"
+        height="1080"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/50"></div>
+    </div>
+
+    <div class="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-16 pt-32 md:justify-center md:px-8 md:pb-24 md:pt-28">
+      <div class="mb-8 flex items-center gap-4">
+        <img src="/brand/logo-mark.svg" alt="" class="h-14 w-14 md:h-16 md:w-16" width="64" height="64" />
+        <p class="font-display text-4xl font-semibold tracking-tight text-snow sm:text-5xl md:text-6xl lg:text-7xl">
+          SIGMA<br class="sm:hidden" /> PRECISIONS
+        </p>
+      </div>
+      <h1 class="mt-2 max-w-xl text-xl font-medium text-snow/95 md:text-2xl text-balance">
+        Precision components, engineered end to end.
+      </h1>
+      <p class="mt-4 max-w-lg text-base leading-relaxed text-mist md:text-lg">
+        Design, prototype, qualify, and manufacture for power, aerospace, and oil &amp; gas.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href="/contact"
+          class="cta-btn inline-flex"
+        >
+          Request a quote
+        </a>
+        <a
+          href="/capabilities"
+          class="inline-flex rounded-sm border border-accent/40 px-6 py-3 text-sm font-medium text-accent-soft transition-colors hover:border-signal hover:bg-signal/10 hover:text-signal-soft"
+        >
+          Our capabilities
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip: sectors -->
+  <section class="border-y border-accent/25 bg-gradient-to-r from-slate-deep via-steel/80 to-slate-deep">
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 md:flex-row md:items-center md:justify-between md:px-8">
+      <p class="reveal text-xs font-semibold uppercase tracking-[0.28em] text-accent-soft">Serving</p>
+      <ul class="reveal flex flex-wrap gap-x-10 gap-y-3 text-sm font-medium text-fog md:text-base">
+        <li class="text-snow">Power generation</li>
+        <li class="text-signal/50">|</li>
+        <li class="text-snow">Aerospace</li>
+        <li class="text-signal/50">|</li>
+        <li class="text-snow">Oil &amp; gas</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Four capability pillars -->
+  <section class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <div class="max-w-2xl">
+      <p class="reveal text-xs font-semibold uppercase tracking-[0.28em] text-accent">Capabilities</p>
+      <h2 class="reveal mt-4 font-display text-3xl font-semibold tracking-tight text-snow md:text-4xl text-balance">
+        From concept to qualified production
+      </h2>
+    </div>
+
+    <ol class="mt-14 divide-y divide-graphite border-y border-graphite">
+      {
+        [
+          {
+            n: '01',
+            title: 'Design & engineering',
+            body: 'Mechanical and electro-mechanical product development aligned to your specifications and process requirements.',
+          },
+          {
+            n: '02',
+            title: 'Prototype manufacturing',
+            body: 'Rapid, controlled builds to validate form, fit, and function before committing to volume.',
+          },
+          {
+            n: '03',
+            title: 'Qualification & testing',
+            body: 'Reliability and qualification testing so parts meet the duty cycle your application demands.',
+          },
+          {
+            n: '04',
+            title: 'Low-to-medium volume production',
+            body: 'Repeatable manufacturing and supply of precision systems and components for ongoing programs.',
+          },
+        ].map((item) => (
+          <li class="reveal grid gap-4 py-8 md:grid-cols-[5rem_1fr_1.4fr] md:gap-10 md:py-10">
+            <span class="font-display text-sm font-semibold text-accent">{item.n}</span>
+            <h3 class="font-display text-xl font-semibold text-snow md:text-2xl">{item.title}</h3>
+            <p class="text-mist leading-relaxed">{item.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="reveal mt-10">
+      <a href="/capabilities" class="text-sm font-semibold text-accent-soft transition-colors hover:text-signal-soft">
+        Explore capabilities →
+      </a>
+    </div>
+  </section>
+
+  <!-- About teaser -->
+  <section class="border-y border-accent/20 section-tint">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-8 md:py-28">
+      <div class="reveal relative aspect-[4/3] overflow-hidden rounded-sm border border-accent/20 bg-graphite shadow-[0_0_40px_rgba(184,146,74,0.12)]">
+        <img
+          src="/images/facility.jpg"
+          alt="Precision manufacturing facility floor — industrial engineering environment typical of Telangana’s manufacturing corridor"
+          class="h-full w-full object-cover"
+          width="800"
+          height="600"
+        />
+      </div>
+      <div>
+        <p class="reveal text-xs font-semibold uppercase tracking-[0.28em] text-accent-soft">About</p>
+        <h2 class="reveal mt-4 font-display text-3xl font-semibold tracking-tight text-snow md:text-4xl text-balance">
+          Built in Balanagar for programs that demand precision
+        </h2>
+        <p class="reveal mt-6 text-mist leading-relaxed">
+          Owned and led by {site.leadership.name}, CEO, {site.name} partners with OEMs and tier suppliers from our
+          Technocrat Industrial Estate facility in Hyderabad—delivering precision-engineered components with disciplined
+          process control and materials capability.
+        </p>
+        <a
+          href="/about"
+          class="reveal mt-8 inline-flex text-sm font-semibold text-accent-soft transition-colors hover:text-signal-soft"
+        >
+          About Sigma Precisions →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden border-t border-graphite">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(184,146,74,0.14),transparent_55%)]"></div>
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(61,143,156,0.1),transparent_50%)]"></div>
+    <div class="relative mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <div class="reveal max-w-2xl accent-rule pl-6">
+      <h2 class="font-display text-3xl font-semibold tracking-tight text-snow md:text-4xl text-balance">
+        Ready to discuss your next component program?
+      </h2>
+      <p class="mt-5 text-mist leading-relaxed">
+        Share drawings, specifications, or qualification requirements—we will respond with a clear path forward.
+      </p>
+      <a
+        href="/contact"
+        class="cta-btn mt-8 inline-flex"
+      >
+        Request a quote
+      </a>
+    </div>
+    </div>
+  </section>
+</Layout>

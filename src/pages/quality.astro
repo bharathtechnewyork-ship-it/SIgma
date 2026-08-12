@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<Layout
+  title="Quality"
+  description="Process discipline, materials capability, and inspection mindset for precision-engineered components at Sigma Precisions."
+>
+  <PageHero
+    eyebrow="Quality"
+    title="Process discipline you can trust"
+    description="Credible manufacturing quality without overclaiming—focused on materials, process control, and inspection."
+  />
+
+  <section class="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <div class="reveal max-w-2xl">
+      <p class="text-mist leading-relaxed text-lg">
+        Quality at Sigma Precisions is built into how work moves through the facility: clear requirements, controlled
+        processes, and verification that matches the criticality of the part.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-12 border-t border-graphite pt-16 md:grid-cols-3 md:gap-10">
+      {
+        [
+          {
+            title: 'Process control',
+            body: 'Defined manufacturing routes, documented work instructions, and checks at stages that matter—so results are repeatable across prototype and production runs.',
+          },
+          {
+            title: 'Materials capability',
+            body: 'Experience handling specialty and super alloys, with attention to process windows required by power, aerospace, and oil & gas applications.',
+          },
+          {
+            title: 'Inspection mindset',
+            body: 'Dimensional and visual verification aligned to drawing requirements. We treat inspection as part of delivery, not an afterthought.',
+          },
+        ].map((item) => (
+          <article class="reveal">
+            <h2 class="font-display text-xl font-semibold text-snow">{item.title}</h2>
+            <p class="mt-4 text-sm leading-relaxed text-mist">{item.body}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <aside class="reveal mt-20 max-w-2xl border-l-2 border-accent/60 pl-6">
+      <p class="text-fog leading-relaxed">
+        Formal certifications and customer-specific quality system details can be shared on request. We do not list
+        accreditations on this site until they are confirmed for public use.
+      </p>
+    </aside>
+
+    <div class="reveal mt-16">
+      <a
+        href="/contact"
+        class="cta-btn inline-flex"
+      >
+        Talk quality requirements
+      </a>
+    </div>
+  </section>
+</Layout>

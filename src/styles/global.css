@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  /* Corporate industrial — navy + warmer brass + cool steel blue */
+  --color-ink: #0b1420;
+  --color-slate-deep: #121c2a;
+  --color-steel: #1a2636;
+  --color-graphite: #2c3a4d;
+  --color-mist: #8a97a8;
+  --color-fog: #c8d0da;
+  --color-snow: #f2f4f7;
+  --color-accent: #b8924a;
+  --color-accent-deep: #8f6e35;
+  --color-accent-soft: #d4b06a;
+  --color-signal: #3d8f9c;
+  --color-signal-soft: #5aabb6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-snow font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 75% 50% at 15% -10%, rgba(184, 146, 74, 0.16), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 95% 5%, rgba(61, 143, 156, 0.12), transparent 50%),
+      radial-gradient(ellipse 40% 35% at 70% 100%, rgba(184, 146, 74, 0.06), transparent),
+      linear-gradient(180deg, #0b1420 0%, #0e1824 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-snow;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .cta-btn {
+    @apply rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-ink;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-1px);
+    @apply bg-accent-soft;
+    box-shadow: 0 0 0 1px rgba(212, 176, 106, 0.45);
+  }
+
+  .cta-btn:active {
+    transform: translateY(0);
+  }
+
+  .section-tint {
+    background:
+      linear-gradient(135deg, rgba(184, 146, 74, 0.07), rgba(61, 143, 156, 0.05));
+  }
+
+  .accent-rule {
+    @apply border-l-2 border-accent;
+  }
+}

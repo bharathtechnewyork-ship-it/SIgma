@@ -1,0 +1,23 @@
+---
+interface Props {
+  class?: string;
+  markClass?: string;
+  showWordmark?: boolean;
+}
+
+const { class: className = '', markClass = 'h-9 w-9', showWordmark = true } = Astro.props;
+---
+
+<span class:list={['inline-flex items-center gap-3', className]}>
+  <img src="/brand/logo-mark.svg" alt="" class:list={['shrink-0', markClass]} width="64" height="64" />
+  {
+    showWordmark && (
+      <span class="flex flex-col leading-none">
+        <span class="font-display text-[0.95rem] font-semibold tracking-[0.14em] text-snow md:text-base">SIGMA</span>
+        <span class="mt-1 font-display text-[0.65rem] font-medium tracking-[0.28em] text-fog/85 md:text-[0.7rem]">
+          PRECISIONS
+        </span>
+      </span>
+    )
+  }
+</span>
