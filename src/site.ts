@@ -2,7 +2,8 @@ export const site = {
   name: 'Sigma Precisions',
   legalName: 'Sigma Precisions',
   domain: 'https://sigmaprecisions.com',
-  email: 'puram.bharath@gmail.com',
+  email: 'info@sigmaprecisions.com',
+  formEmail: 'puram.bharath@gmail.com',
   phone: '+91 99494 98896',
   phoneHref: 'tel:+919949498896',
   address: {
