@@ -17,16 +17,24 @@ import { site } from '../site';
   <section class="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
     <!-- Leadership: CEO & Owner -->
     <article class="reveal border-b border-graphite pb-16 md:pb-20">
-      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Leadership</p>
-      <div class="mt-8 grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16 md:items-start">
-        <div>
-          <h2 class="font-display text-3xl font-semibold tracking-tight text-snow md:text-4xl">
-            {site.leadership.name}
-          </h2>
-          <p class="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-            {site.leadership.title}
-          </p>
-        </div>
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-accent-soft">Leadership</p>
+      <div class="mt-8 grid gap-10 md:grid-cols-[16rem_1fr] md:gap-14 md:items-start lg:grid-cols-[18rem_1fr]">
+        <figure class="mx-auto w-full max-w-xs md:mx-0">
+          <div class="overflow-hidden rounded-sm border border-accent/25 bg-steel shadow-[0_0_40px_rgba(184,146,74,0.12)]">
+            <img
+              src="/images/ceo.jpg"
+              alt={`${site.leadership.name}, ${site.leadership.title}`}
+              class="aspect-[4/5] w-full object-cover object-top"
+              width="480"
+              height="600"
+              loading="eager"
+            />
+          </div>
+          <figcaption class="mt-4 text-center md:text-left">
+            <p class="font-display text-xl font-semibold tracking-tight text-snow">{site.leadership.name}</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">{site.leadership.title}</p>
+          </figcaption>
+        </figure>
         <div class="space-y-5 text-mist leading-relaxed">
           <p>
             {site.leadership.name} is the Chief Executive Officer and owner of {site.name}. He leads the company with
